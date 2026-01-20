@@ -1,5 +1,5 @@
 # ch 5.2.1 ui.py
-from PySide6.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout, QMessageBox, QPlainTextEdit, QHBoxLayout, QLineEdit, QComboBox)
+from PySide6.QtWidgets import (QApplication, QWidget, QPushButton, QVBoxLayout, QMessageBox, QPlainTextEdit, QHBoxLayout, QLineEdit, QComboBox, QLabel)
 from PySide6.QtGui import QIcon
 from PySide6 import QtCore
 
@@ -13,6 +13,7 @@ class View(QWidget):
         self.te1 = QPlainTextEdit()
         self.te1.setReadOnly(True)
 
+        self.lbl1 = QLabel('v2.3.0', self)  # 버전 정보 표시를 위한 lbl1 위젯 생성
         self.btn1 = QPushButton('Calc', self)   # 버튼 이름 변경
         self.btn2 = QPushButton('Clear', self)
 
@@ -26,14 +27,14 @@ class View(QWidget):
 
         self.cb = QComboBox(self)   # 콤보 박스 추가
         self.cb.addItems(['+', '-', '*', '/', '^', '%'])  # 커듭제곱 연산자 추가
-
+        
         hbox_formular = QHBoxLayout()   # 새로 정의한 위젯을 QHBoxLayout에 배치
         hbox_formular.addWidget(self.le1)
         hbox_formular.addWidget(self.cb)
         hbox_formular.addWidget(self.le2)
 
         hbox = QHBoxLayout()
-        hbox.addStretch(1)
+        hbox.addWidget(self.lbl1)   # 버전 정보 표시를 위한 lbl1 위젯 생성
         hbox.addWidget(self.btn1)
         hbox.addWidget(self.btn2)
 
